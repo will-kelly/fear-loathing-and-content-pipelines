@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Score your own rollout</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;600;700&family=IBM+Plex+Mono:wght@500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --paper:#E6E7E1; --paper2:#DCDED6; --ink:#1B231F; --ink2:#535E57;
+  --rule:#AFB4AA; --flag:#A93219; --good:#2C5A4C; --amber:#B37F0F;
+}
+*{box-sizing:border-box}
+html,body{margin:0}
+body{
+  background:var(--paper); color:var(--ink);
+  font-family:Archivo,'Helvetica Neue',Helvetica,Arial,sans-serif;
+  font-size:17px; line-height:1.45;
+  -webkit-font-smoothing:antialiased;
+}
+.wrap{max-width:760px;margin:0 auto;padding:0 20px 140px}
+
+/* the measurement spine that runs through every artifact in this kit */
+.spine{position:relative;padding-left:38px}
+.spine::before{
+  content:"";position:absolute;left:0;top:6px;bottom:0;width:13px;
+  border-left:2px solid var(--ink);
+  background:repeating-linear-gradient(to bottom,var(--ink) 0 2px,transparent 2px 22px);
+}
+
+header{padding:52px 0 26px}
+h1{font-size:40px;line-height:1.05;font-weight:700;letter-spacing:-.02em;margin:0 0 14px;max-width:15ch}
+.lede{font-size:19px;color:var(--ink2);margin:0;max-width:62ch}
+.instruct{margin:22px 0 0;font-size:15px;color:var(--ink2);max-width:62ch}
+
+ol{list-style:none;margin:34px 0 0;padding:0;counter-reset:q}
+li{padding:20px 0;border-top:1px solid var(--rule)}
+li:last-child{border-bottom:1px solid var(--rule)}
+.q{display:flex;gap:14px;align-items:baseline;margin-bottom:14px}
+.qn{
+  font-family:'IBM Plex Mono',ui-monospace,monospace;font-size:14px;
+  color:var(--ink2);flex:none;width:2ch;
+}
+.qt{font-size:18px;line-height:1.35;margin:0;max-width:56ch}
+.opts{display:flex;gap:8px;margin-left:calc(2ch + 14px);flex-wrap:wrap}
+button.opt{
+  font:inherit;font-size:15px;padding:9px 18px;
+  background:transparent;color:var(--ink);
+  border:1.5px solid var(--rule);border-radius:2px;cursor:pointer;
+}
+button.opt:hover{border-color:var(--ink)}
+button.opt:focus-visible{outline:3px solid var(--amber);outline-offset:2px}
+button.opt[aria-pressed="true"]{background:var(--ink);color:var(--paper);border-color:var(--ink)}
+
+/* readout */
+.readout{
+  position:fixed;left:0;right:0;bottom:0;background:var(--ink);color:var(--paper);
+  padding:14px 20px;
+}
+.readout-in{max-width:760px;margin:0 auto;display:flex;align-items:center;gap:22px}
+.score{
+  font-family:'IBM Plex Mono',ui-monospace,monospace;font-size:44px;line-height:1;
+  font-weight:500;font-variant-numeric:tabular-nums;flex:none;
+}
+.score span{font-size:19px;opacity:.6}
+.band{flex:1;min-width:0}
+.band-name{font-size:19px;font-weight:600;line-height:1.2}
+.band-sub{font-size:14px;opacity:.72;line-height:1.3;margin-top:2px}
+.gauge{height:8px;background:rgba(230,231,225,.22);margin-top:9px;position:relative}
+.gauge i{display:block;height:100%;width:0;background:var(--paper);transition:width .18s ease}
+@media (prefers-reduced-motion:reduce){.gauge i{transition:none}}
+
+.after{margin-top:44px;padding-top:26px;border-top:2px solid var(--ink)}
+.after h2{font-size:22px;margin:0 0 10px;font-weight:600}
+.after p{margin:0 0 12px;max-width:62ch;color:var(--ink2)}
+.reset{font:inherit;font-size:15px;background:none;border:none;padding:0;color:var(--flag);cursor:pointer;text-decoration:underline}
+
+@media (max-width:560px){
+  h1{font-size:30px}
+  .lede{font-size:17px}
+  .spine{padding-left:26px}
+  .spine::before{width:9px}
+  .score{font-size:34px}
+  .opts{margin-left:0}
+  button.opt{flex:1;padding:11px 8px;text-align:center}
+}
+</style>
+</head>
+<body>
+<div class="wrap spine">
+
+<header>
+  <h1>Score your own rollout</h1>
+  <p class="lede">Ten statements about the AI tool your organization already deployed. Not about the model. About whether anyone actually uses it.</p>
+  <p class="instruct">Answer for the rollout you know best. Ninety seconds. Nobody sees your score but you.</p>
+</header>
+
+<ol id="quiz"></ol>
+
+<section class="after">
+  <h2>What the score is measuring</h2>
+  <p>Every item is a change management condition, not a technical one. A team can pass a vendor readiness checklist and still score four here.</p>
+  <p>If your score is low, the fix is not a better model or a longer pilot. It's the work in the items you answered no to.</p>
+  <p><button class="reset" id="reset">Clear and start over</button></p>
+</section>
+
+</div>
+
+<div class="readout" role="status" aria-live="polite">
+  <div class="readout-in">
+    <div class="score"><b id="num">0</b><span> / 20</span></div>
+    <div class="band">
+      <div class="band-name" id="bandName">Unanswered</div>
+      <div class="band-sub" id="bandSub">Start with the first statement.</div>
+      <div class="gauge"><i id="fill"></i></div>
+    </div>
+  </div>
+</div>
+
+<script>
+const QUESTIONS = [
+  "You can name the specific task the rollout was supposed to remove from someone's day.",
+  "At least one job description changed because of it.",
+  "Usage is measured by tasks completed, not seats provisioned or logins.",
+  "The source content it draws on is good enough that an answer built from it could be sent to a customer.",
+  "There is a named person accountable for what the tool is allowed to say.",
+  "People know what to do when the output is wrong, and doing it takes under a minute.",
+  "It replaced a step in an existing workflow rather than adding one beside it.",
+  "Training happened inside the work, not in a classroom session or a recorded webinar.",
+  "A leader outside IT has used it in front of others and said so.",
+  "If you switched it off tomorrow, someone would complain."
+];
+
+const BANDS = [
+  [0,6,  "Deployed, not adopted", "The tool is live and the work has not changed. Usage numbers here are logins."],
+  [7,12, "Pilot gravity",         "It works for the people who wanted it. It has not crossed into anyone else's week."],
+  [13,17,"Landing",               "Real dependency is forming. The gaps left are the ones that decide renewal."],
+  [18,20,"Adopted, or generously scored", "If this is honest, you have something most of the room does not. Check it against usage data before you believe it."]
+];
+
+const state = new Array(QUESTIONS.length).fill(null);
+const list = document.getElementById('quiz');
+
+QUESTIONS.forEach((text,i)=>{
+  const li = document.createElement('li');
+  li.innerHTML =
+    '<div class="q"><span class="qn">'+String(i+1).padStart(2,'0')+'</span>'+
+    '<p class="qt">'+text+'</p></div>'+
+    '<div class="opts" role="group" aria-label="Answer for statement '+(i+1)+'"></div>';
+  const opts = li.querySelector('.opts');
+  [["No",0],["Partly",1],["Yes",2]].forEach(([label,val])=>{
+    const b = document.createElement('button');
+    b.className = 'opt'; b.type='button'; b.textContent = label;
+    b.setAttribute('aria-pressed','false');
+    b.onclick = ()=>{
+      state[i] = val;
+      opts.querySelectorAll('button').forEach(x=>x.setAttribute('aria-pressed','false'));
+      b.setAttribute('aria-pressed','true');
+      render();
+    };
+    opts.appendChild(b);
+  });
+  list.appendChild(li);
+});
+
+function render(){
+  const answered = state.filter(v=>v!==null).length;
+  const total = state.reduce((a,v)=>a+(v||0),0);
+  document.getElementById('num').textContent = total;
+  document.getElementById('fill').style.width = (total/20*100)+'%';
+  const nameEl = document.getElementById('bandName');
+  const subEl  = document.getElementById('bandSub');
+  if(answered === 0){
+    nameEl.textContent = 'Unanswered';
+    subEl.textContent = 'Start with the first statement.';
+    return;
+  }
+  const band = BANDS.find(b => total >= b[0] && total <= b[1]);
+  nameEl.textContent = band[2];
+  subEl.textContent = answered < QUESTIONS.length
+    ? (QUESTIONS.length - answered) + ' left. Running band: ' + band[3]
+    : band[3];
+}
+
+document.getElementById('reset').onclick = ()=>{
+  state.fill(null);
+  document.querySelectorAll('button.opt').forEach(b=>b.setAttribute('aria-pressed','false'));
+  render();
+  window.scrollTo({top:0,behavior:'smooth'});
+};
+
+render();
+</script>
+</body>
+</html>
