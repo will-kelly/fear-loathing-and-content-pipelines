@@ -1,0 +1,67 @@
+# Source registry for Northfield Labs content.
+#
+# One entry per topic. If a topic isn't here, the pipeline doesn't have a source for it.
+# status: current  -> the agent may cite it
+# status: retired  -> the agent must refuse it and point to the replacement
+# status: draft    -> not yet approved; the agent must refuse it
+#
+# Every file in canon/ must appear here. A file not in the registry is not canon.
+
+sources:
+  - id: product-overview
+    file: canon/product-overview.md
+    topic: What Kestrel is and what it does
+    owner: Priya Raman (Product Marketing)
+    backup: Marcus Hale (Product)
+    version: 3.2
+    status: current
+    last_reviewed: 2026-09-18
+
+  - id: pricing-2026
+    file: canon/pricing-and-packaging.md
+    topic: Plans, prices, limits
+    owner: Dana Okafor (Revenue Operations)
+    backup: Priya Raman (Product Marketing)
+    version: 4.0
+    status: current
+    last_reviewed: 2026-10-01
+    supersedes: pricing-2025
+
+  - id: pricing-2025
+    file: canon/retired/pricing-2025.md
+    topic: Plans, prices, limits (previous year)
+    owner: Dana Okafor (Revenue Operations)
+    version: 3.1
+    status: retired
+    retired_on: 2026-10-01
+    replaced_by: pricing-2026
+    note: Kept for the record. Prices and plan names in this file are wrong for 2026.
+
+  - id: security-faq
+    file: canon/security-faq.md
+    topic: Security, compliance, data handling
+    owner: Lena Voss (Security & Compliance)
+    backup: Tom Adeyemi (Legal)
+    version: 2.4
+    status: current
+    last_reviewed: 2026-10-08
+    note: Claims about certifications and retention require Legal co-sign at Gate 4.
+
+  - id: customer-proof
+    file: canon/customer-proof.md
+    topic: Approved customer quotes and outcome numbers
+    owner: Priya Raman (Product Marketing)
+    backup: Dana Okafor (Revenue Operations)
+    version: 1.6
+    status: current
+    last_reviewed: 2026-09-30
+    note: Only the quotes and numbers in this file are approved. No paraphrasing customer quotes.
+
+  - id: style-guide
+    file: canon/style-guide.md
+    topic: Voice, banned words, formatting
+    owner: Priya Raman (Product Marketing)
+    backup: Will Kelly (Content)
+    version: 2.0
+    status: current
+    last_reviewed: 2026-09-12

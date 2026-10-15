@@ -1,0 +1,31 @@
+piece: kestrel-soc2-linkedin
+title: Kestrel SOC 2 Type II announcement (LinkedIn)
+channel: LinkedIn post
+shipped_on: 2026-10-10
+owner: Priya Raman
+legal_cosign: Tom Adeyemi
+requested_by: Dana Okafor
+requested_on: 2026-10-06
+draft_versions: 3
+gates_reopened: 4        # Gate 2 (v1→v2), Gate 1, Gate 2, Gate 3 (v2→v3)
+overrides: 2             # Gate 2 and Gate 3, both length, draft v3
+words: 206
+sources:
+  - id: security-faq
+    version: 2.4
+  - id: customer-proof
+    version: 1.6
+  - id: product-overview
+    version: 3.2
+  - id: pricing-2026
+    version: 4.0
+  - id: style-guide
+    version: 2.0
+refused:
+  - id: pricing-2025
+    reason: retired 2026-10-01, replaced by pricing-2026
+references: []
+retire_if_changed:
+  - security-faq          # SOC 2 phrasing, audit period, NDA availability
+  - customer-proof        # Q1 expires 2027-03-31; N1 and N2 phrasing
+  - pricing-2026          # Team price and trial terms
