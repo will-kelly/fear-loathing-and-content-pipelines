@@ -1,0 +1,24 @@
+{
+  "working_title": "The quiet discount: why your copilot trusts the wrong runbook",
+  "thesis": "AI readiness programs fail on the wiki, not the model, because they never inventory the documentation the model is going to read.",
+  "audience": "The internal AI rollout owner at a mid-size company who is about to be blamed for a documentation problem that predates the copilot. They believe the model is the risk; they have not yet looked at the corpus.",
+  "channel": "newsletter",
+  "register": "field-note with an argument",
+  "reader_problem": "They have shipped or are about to ship an internal copilot over Confluence or SharePoint. The demo went well. They have no idea what the retriever is actually reading, and the first bad answer is days away.",
+  "what_changes_for_the_reader": "They stop treating the corpus as a given and run a three-check audit (no owner, near-duplicates, untouched for a year) before the copilot indexes a space.",
+  "anchors": [
+    "Mid-size SaaS client (~400 people) rolled out an internal copilot over Confluence; a support engineer asked how to rotate a customer API key and got the superseded 2022 runbook because the old page was never deleted or marked stale",
+    "Writer audited roughly 1,100 pages in the indexed space: about a third untouched for over two years, roughly 140 pages with a near-duplicate carrying conflicting instructions, roughly 60 with an owner no longer at the company",
+    "Writer's recurring observation across engagements: readiness assessments inventory models, vendors, and use cases, and treat 'data quality' as structured warehouse data, not the wiki"
+  ],
+  "open_questions": [
+    "Are the audit figures (1,100 pages, ~1/3, ~140, ~60) exact enough to print, or should they be rounded further and framed as approximate?",
+    "Can the client be described any more specifically (industry, which copilot product) without identifying them?"
+  ],
+  "non_goals": [
+    "Arguing whether AI will replace technical writers",
+    "Comparing copilot vendors or retrieval products",
+    "Explaining how retrieval-augmented generation works at a technical level"
+  ],
+  "rationale": "The material has a strong first-hand anchor (the key rotation incident) and a candidate framework (the 'quiet discount'), which makes it a field note rather than an explainer. Newsletter fits the length and the first-person register. Two open questions, both about precision rather than substance, so the brief can lock and the writer can answer them during review."
+}

@@ -1,0 +1,90 @@
+{
+  "framework_name": "The quiet discount",
+  "claims": [
+    {
+      "id": "C1",
+      "kind": "anchor",
+      "text": "A mid-size SaaS company (about 400 people) rolled out an internal copilot over its Confluence space, and within three weeks a support engineer asking how to rotate a customer API key was given the procedure from a superseded 2022 runbook.",
+      "confidence": "VERIFIED",
+      "sources": [],
+      "how_to_use": "Opener. This is the piece's scene; start inside it."
+    },
+    {
+      "id": "C2",
+      "kind": "anchor",
+      "text": "The superseded runbook was never deleted or marked stale, and its title was nearly identical to the current page's.",
+      "confidence": "VERIFIED",
+      "sources": [],
+      "how_to_use": "Immediately after C1. The mechanism of the failure."
+    },
+    {
+      "id": "C3",
+      "kind": "anchor",
+      "text": "An audit of roughly 1,100 pages in the indexed space found about a third untouched for more than two years, roughly 140 with a near-duplicate carrying conflicting instructions, and roughly 60 whose listed owner no longer worked at the company.",
+      "confidence": "VERIFIED",
+      "sources": [],
+      "how_to_use": "Proof section. Present as approximate figures from the writer's own audit, not as industry statistics."
+    },
+    {
+      "id": "C4",
+      "kind": "observation",
+      "text": "AI readiness assessments inventory models, vendors, and use cases, and almost never inventory the document corpus the model will retrieve from.",
+      "confidence": "VERIFIED",
+      "sources": [],
+      "how_to_use": "The turn from the anecdote to the argument. Writer's view, stated as such."
+    },
+    {
+      "id": "C5",
+      "kind": "observation",
+      "text": "When a readiness deck does mention data quality, it means structured data in the warehouse, not the wiki.",
+      "confidence": "VERIFIED",
+      "sources": [],
+      "how_to_use": "Supports C4; one sentence, dry."
+    },
+    {
+      "id": "C6",
+      "kind": "framework",
+      "text": "The quiet discount is the invisible filtering a human reader applies to a stale page (the date in the breadcrumb, the departed author, the slightly wrong product name) that a retrieval system cannot apply, so documentation good enough for a reader is not automatically good enough for a retriever.",
+      "confidence": "VERIFIED",
+      "sources": [],
+      "how_to_use": "The piece's apparatus. Name it, define it once, then use it to explain C1 and to motivate C8."
+    },
+    {
+      "id": "C7",
+      "kind": "observation",
+      "text": "A retriever ranking two near-identical chunks has no context beyond the text, so it can return the superseded one with full confidence.",
+      "confidence": "SIGNAL",
+      "sources": [],
+      "how_to_use": "Mechanism under C6. Keep it at the level of what the writer observed; do not explain embeddings or ranking internals (non-goal)."
+    },
+    {
+      "id": "C8",
+      "kind": "framework",
+      "text": "Before a copilot indexes a space, run three checks: pages with no current owner, pages with a near-duplicate, and pages nobody has opened in a year; then fix or archive what the checks surface.",
+      "confidence": "VERIFIED",
+      "sources": [],
+      "how_to_use": "The close. This is what changes for the reader."
+    },
+    {
+      "id": "C9",
+      "kind": "observation",
+      "text": "The three-check audit is a few days of unglamorous work and would have prevented the key rotation incident.",
+      "confidence": "VERIFIED",
+      "sources": [],
+      "how_to_use": "Last paragraph, to set expectations about effort."
+    },
+    {
+      "id": "C10",
+      "kind": "fact",
+      "text": "Most enterprise copilot deployments fail within the first year because of content quality.",
+      "confidence": "UNSUPPORTED",
+      "sources": [],
+      "how_to_use": "Do not use. Captured because the raw notes gesture at it; the writer has no source and web search was off. Listed so the writer sees the claim they wanted and cannot yet make."
+    }
+  ],
+  "gaps": [
+    "Confirm whether the audit figures in C3 can be printed as given or need further rounding; the draft will present them as approximate either way.",
+    "Supply one sentence on what the client did after the audit (archived N pages? assigned owners?) if it can be shared; the close is stronger with an outcome.",
+    "If you want C10 in the piece, find a primary source; otherwise it stays out."
+  ]
+}

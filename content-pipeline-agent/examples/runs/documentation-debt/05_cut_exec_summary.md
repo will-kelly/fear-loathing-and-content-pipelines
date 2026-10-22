@@ -1,0 +1,7 @@
+- An internal copilot returned a superseded 2022 runbook for an API key rotation; the page had never been archived and shared a near-identical title with the current one.
+- Audit of the ~1,100 indexed pages: roughly a third untouched for 2+ years, ~140 with a conflicting near-duplicate, ~60 with a departed owner.
+- Root cause is the corpus, not the model. Readiness assessments inventory models, vendors, and use cases; they do not inventory what the model will read.
+- Framework: the quiet discount. Human readers silently filter stale pages using cues (date, author, naming). Retrievers have no such filter and serve the stale page with full confidence.
+- Standard to adopt: documentation must be ready for a retriever, not merely ready for a reader.
+- Action before indexing any space: identify pages with no current owner, near-duplicate pages, and pages unopened in 12 months; fix or archive each.
+- Effort: a few days per space. Cost of skipping it: the first public bad answer.

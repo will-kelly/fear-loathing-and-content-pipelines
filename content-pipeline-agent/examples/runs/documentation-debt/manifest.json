@@ -1,0 +1,63 @@
+{
+  "run": "documentation-debt",
+  "created_utc": "20261015-031752",
+  "model": "claude-sonnet-5-5",
+  "dry_run": true,
+  "web_search": false,
+  "passed": true,
+  "revisions": 0,
+  "seconds": 0.0,
+  "stages": [
+    {
+      "stage": "intake",
+      "usage": {
+        "fixture": "intake.json"
+      },
+      "searches": 0,
+      "citations": 0,
+      "note": ""
+    },
+    {
+      "stage": "claims",
+      "usage": {
+        "fixture": "claims.json"
+      },
+      "searches": 0,
+      "citations": 0,
+      "note": "10 claims, 3 gaps"
+    },
+    {
+      "stage": "draft",
+      "usage": {
+        "fixture": "draft.json"
+      },
+      "searches": 0,
+      "citations": 0,
+      "note": "revision 0, 906 words"
+    },
+    {
+      "stage": "review",
+      "usage": {
+        "fixture": "review.json"
+      },
+      "searches": 0,
+      "citations": 0,
+      "note": "PASS score=8 lint_ok=True"
+    },
+    {
+      "stage": "package",
+      "usage": {
+        "fixture": "package.json"
+      },
+      "searches": 0,
+      "citations": 0,
+      "note": "3 channel cuts"
+    }
+  ],
+  "gates": {
+    "min_words": 600,
+    "max_words": 1600,
+    "min_review_score": 7,
+    "max_revision_passes": 2
+  }
+}

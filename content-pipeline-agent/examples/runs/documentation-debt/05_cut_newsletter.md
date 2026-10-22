@@ -1,0 +1,1 @@
+A copilot handed a support engineer a two-year-old runbook with full confidence, and leadership called it a hallucination. It wasn't. This week: the invisible filtering humans apply to stale docs, why the retriever can't apply it, and the three checks to run before you index anything.

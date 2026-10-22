@@ -1,0 +1,32 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "content-pipeline-agent"
+version = "0.1.0"
+description = "A five-stage, claims-first content pipeline agent built on the Claude API. Brief in, publish-ready package out, with an evidence ledger and editorial gates in between."
+readme = "README.md"
+requires-python = ">=3.10"
+license = { text = "MIT" }
+authors = [{ name = "Will Kelly" }]
+keywords = ["claude", "anthropic", "content-pipeline", "agent", "editorial", "llm"]
+dependencies = [
+  "anthropic>=0.40",
+]
+
+[project.optional-dependencies]
+dev = ["pytest>=8"]
+
+[project.scripts]
+content-pipeline = "content_pipeline.cli:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.setuptools.package-data]
+content_pipeline = ["prompts/*.md", "fixtures/*.json", "fixtures/*.md"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["src"]

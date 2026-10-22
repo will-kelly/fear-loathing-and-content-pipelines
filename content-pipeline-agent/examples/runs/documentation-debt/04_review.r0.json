@@ -1,0 +1,126 @@
+{
+  "verdict": "PASS",
+  "score": 8,
+  "lint": {
+    "ok": true,
+    "word_count": 906
+  },
+  "findings": [
+    {
+      "check": "length",
+      "verdict": "PASS",
+      "detail": "906 words.",
+      "fix": ""
+    },
+    {
+      "check": "claim_ids",
+      "verdict": "PASS",
+      "detail": "All claim ids resolve.",
+      "fix": ""
+    },
+    {
+      "check": "unsupported_claims",
+      "verdict": "PASS",
+      "detail": "No unsupported claims used.",
+      "fix": ""
+    },
+    {
+      "check": "framework",
+      "verdict": "PASS",
+      "detail": "Framework claim present.",
+      "fix": ""
+    },
+    {
+      "check": "placeholders",
+      "verdict": "WARN",
+      "detail": "1 placeholder(s) still in the body.",
+      "fix": "Writer must fill these before publish; the pipeline will not invent them."
+    },
+    {
+      "check": "banned_phrases",
+      "verdict": "PASS",
+      "detail": "None found.",
+      "fix": ""
+    },
+    {
+      "check": "claims_fidelity",
+      "verdict": "PASS",
+      "detail": "Every factual assertion traces to C1-C9. The audit figures (C3) are framed as approximate. The retriever mechanism (C7, SIGNAL) is hedged with 'from what I've watched these systems do' and stays at the level of observed behavior. C10 (UNSUPPORTED) does not appear. The aside about SharePoint and Notion at other companies is phrased as the writer's experience, which keeps it inside C4's territory rather than asserting a new fact.",
+      "fix": ""
+    },
+    {
+      "check": "thesis_delivery",
+      "verdict": "PASS",
+      "detail": "The thesis arrives in paragraph three ('The documentation problem had been sitting in that space for two years; the copilot just made it visible') and is restated in the writer's words at the close. The middle sections each advance it rather than restating it.",
+      "fix": ""
+    },
+    {
+      "check": "framework_load_bearing",
+      "verdict": "PASS",
+      "detail": "Delete the 'quiet discount' section and the three-check list loses its justification; check 3 ('a page no human has looked at is a page no human has discounted') depends on it directly. The framework organizes the second half of the piece.",
+      "fix": ""
+    },
+    {
+      "check": "first_hand_evidence",
+      "verdict": "PASS",
+      "detail": "The piece opens inside C1/C2 and the proof section is C3. Both anchors carry the argument; the observations (C4, C5) support rather than substitute.",
+      "fix": ""
+    },
+    {
+      "check": "voice",
+      "verdict": "WARN",
+      "detail": "Mostly clean. Two small breaks: 'It is fine. For people. People have the discount.' is a fragment triplet that reads as a tic the voice guide warns about, and 'This is the part that frustrates me, because it's fixable' is a mild throat-clear opening a section.",
+      "fix": "Consider merging the three fragments into one or two sentences, and cut 'This is the part that frustrates me' down to the clause that carries information."
+    },
+    {
+      "check": "reader_payoff",
+      "verdict": "PASS",
+      "detail": "The close tells the reader what to do (three checks, before indexing) and ends on the point rather than a summary or a question. The placeholder for the client outcome is correctly left visible rather than invented.",
+      "fix": ""
+    }
+  ],
+  "model_output": {
+    "score": 8,
+    "verdict": "PASS",
+    "findings": [
+      {
+        "check": "claims_fidelity",
+        "verdict": "PASS",
+        "detail": "Every factual assertion traces to C1-C9. The audit figures (C3) are framed as approximate. The retriever mechanism (C7, SIGNAL) is hedged with 'from what I've watched these systems do' and stays at the level of observed behavior. C10 (UNSUPPORTED) does not appear. The aside about SharePoint and Notion at other companies is phrased as the writer's experience, which keeps it inside C4's territory rather than asserting a new fact.",
+        "fix": ""
+      },
+      {
+        "check": "thesis_delivery",
+        "verdict": "PASS",
+        "detail": "The thesis arrives in paragraph three ('The documentation problem had been sitting in that space for two years; the copilot just made it visible') and is restated in the writer's words at the close. The middle sections each advance it rather than restating it.",
+        "fix": ""
+      },
+      {
+        "check": "framework_load_bearing",
+        "verdict": "PASS",
+        "detail": "Delete the 'quiet discount' section and the three-check list loses its justification; check 3 ('a page no human has looked at is a page no human has discounted') depends on it directly. The framework organizes the second half of the piece.",
+        "fix": ""
+      },
+      {
+        "check": "first_hand_evidence",
+        "verdict": "PASS",
+        "detail": "The piece opens inside C1/C2 and the proof section is C3. Both anchors carry the argument; the observations (C4, C5) support rather than substitute.",
+        "fix": ""
+      },
+      {
+        "check": "voice",
+        "verdict": "WARN",
+        "detail": "Mostly clean. Two small breaks: 'It is fine. For people. People have the discount.' is a fragment triplet that reads as a tic the voice guide warns about, and 'This is the part that frustrates me, because it's fixable' is a mild throat-clear opening a section.",
+        "fix": "Consider merging the three fragments into one or two sentences, and cut 'This is the part that frustrates me' down to the clause that carries information."
+      },
+      {
+        "check": "reader_payoff",
+        "verdict": "PASS",
+        "detail": "The close tells the reader what to do (three checks, before indexing) and ends on the point rather than a summary or a question. The placeholder for the client outcome is correctly left visible rather than invented.",
+        "fix": ""
+      }
+    ],
+    "strongest_section": "The 'quiet discount' definition paragraph, which earns the framework by describing the human filtering in concrete cues before naming it.",
+    "one_line_diagnosis": "Publishable once the placeholder is filled; the two voice WARNs are a five-minute edit."
+  }
+}
