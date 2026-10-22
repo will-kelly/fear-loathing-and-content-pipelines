@@ -1,4 +1,4 @@
-# Build an AI content pipeline with no code: the Claude Project / custom GPT version
+# Build an AI content pipeline with no code: the Claude Project
 
 *Companion tutorial to "Fear, Loathing, and AI Content Pipelines" — All Day AI, October 22, 2026. For the Python version, see [TUTORIAL.md](TUTORIAL.md).*
 
